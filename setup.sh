@@ -13,7 +13,7 @@ source .venv/bin/activate
 # download required python packages
 if [ ! -f requirements.txt ]; then
   pip3 install \
-    RPi.GPIO opencv-python
+    RPi.GPIO opencv-python-headless
   pip3 freeze > requirements.txt
 else
   pip3 install -r requirements.txt
