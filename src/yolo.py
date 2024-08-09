@@ -1,5 +1,6 @@
 from super_gradients.training import models
 from super_gradients.common.object_names import Models
+import time
 
 from camera import get_frame
 
@@ -7,7 +8,10 @@ yolo = models.get(Models.YOLO_NAS_M, pretrained_weights="coco")
 
 
 if __name__ == "__main__":
-    model_predictions = yolo.predict(get_frame()).save("test/testdetect.jpg")
+    while True:
+        input("Enter to take picture")
+        ts = int(time.time())
+        model_predictions = yolo.predict(get_frame()).save(f"test/detect-{ts}.jpg")
 
     prediction = model_predictions[
         0
