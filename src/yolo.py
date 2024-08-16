@@ -4,14 +4,14 @@ import time
 
 from camera import get_frame
 
-yolo = models.get(Models.YOLO_NAS_M, pretrained_weights="coco")
-
 
 if __name__ == "__main__":
-    while True:
-        input("Enter to take picture")
-        ts = int(time.time())
-        model_predictions = yolo.predict(get_frame()).save(f"test/detect-{ts}.jpg")
+    input("Enter to take picture")
+    img = get_frame()
+    print("Captured")
+    ts = int(time.time())
+    yolo = models.get(Models.YOLO_NAS_S, pretrained_weights="coco")
+    model_predictions = yolo.predict(img).save(f"test/detect-{ts}.jpg")
 
     prediction = model_predictions[
         0
